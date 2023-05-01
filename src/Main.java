@@ -17,7 +17,7 @@ public class Main {
 
 
         //add background to the frame
-        ImageIcon BackgroundImage = new ImageIcon("D:\\background.jpg");
+        ImageIcon BackgroundImage = new ImageIcon("background.jpg");
         Image img = BackgroundImage.getImage();
         Image temp_img = img.getScaledInstance(1000, 800, Image.SCALE_SMOOTH);
         BackgroundImage = new ImageIcon(temp_img);
@@ -43,7 +43,7 @@ public class Main {
         frame.pack();
 
         //create two labels for player1/2 to show beside the board
-        ImageIcon imageForPlayer_1 = new ImageIcon("D:\\player 2.png");
+        ImageIcon imageForPlayer_1 = new ImageIcon("player 2.png");
         Image img1 = imageForPlayer_1.getImage();
         Image temp_img1 = img1.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         imageForPlayer_1 = new ImageIcon(temp_img1);
@@ -56,7 +56,7 @@ public class Main {
         player_1.setForeground(new Color(0xFFFFFFFF));
         player_1.setFont(new Font("MV Boli", Font.PLAIN, 24));
 
-        ImageIcon imageForPlayer_2 = new ImageIcon("D:\\player 1.png");
+        ImageIcon imageForPlayer_2 = new ImageIcon("player 1.png");
         Image img2 = imageForPlayer_2.getImage();
         Image temp_img2 = img2.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
         imageForPlayer_2 = new ImageIcon(temp_img2);
