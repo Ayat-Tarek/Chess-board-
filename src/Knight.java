@@ -11,4 +11,8 @@ public class Knight extends Pieces {
         this.pieceName ="knight";
         this.pieceImage = piecesImage.getSubimage(3*piecesImageScale , isWhite? 0 : piecesImageScale,piecesImageScale,piecesImageScale ).getScaledInstance(board.spotSize,board.spotSize, BufferedImage.SCALE_SMOOTH);
     }
+
+    public boolean isValidMovement(int col,int row){
+        return Math.abs(col-this.column)==2&&Math.abs(row-this.row)==3||Math.abs(col-this.column)==3&&Math.abs(row-this.row)==2;
+    }
 }

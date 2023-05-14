@@ -1,9 +1,11 @@
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-public class Pieces extends JLabel {
+import java.util.ArrayList;
+
+public class Pieces {
+    Move move;
     int position_x;
     int position_y;
     int row;
@@ -12,24 +14,55 @@ public class Pieces extends JLabel {
     String pieceName;
     Image pieceImage;
     Board board;
-   BufferedImage piecesImage;
+    protected boolean isFirstMove = true;
+
+    BufferedImage piecesImage;
+
     {
         try {
-            piecesImage = ImageIO.read(ClassLoader.getSystemResourceAsStream("resources/"+ "image.png"));
+            piecesImage = ImageIO.read(ClassLoader.getSystemResourceAsStream("resources/" + "image.png"));
         } catch (IOException e) {
             e.getStackTrace();
             e.printStackTrace();
         }
     }
 
-    protected int piecesImageScale = piecesImage.getWidth()/6;
+    protected int piecesImageScale = piecesImage.getWidth() / 6;
+
     public Pieces(Board board) {
         this.board = board;
     }
 
-    public void paint(Graphics2D g2d){
-        g2d.drawImage(pieceImage,position_x,position_y,null);
+    public boolean isValidMovement(int col, int row){
+        return true;
     }
+    public boolean moveCollidesWithPiece(int col,int row) {
+        return false;
 
     }
+    public boolean isValidMove(Move move){
+       KingCheck checkScanner=new KingCheck(board);
+        if (board.sameColor(move.selectedPiece, move.killedPieces)) {
+            return false;
+        }
+       if (!(move.selectedPiece.isValidMovement(move.newColumn, move.newRow))) {
+            return false;
+        }
+        if(move.selectedPiece.moveCollidesWithPiece(move.newColumn, move.newRow)){
+            return false;
+        }
+       if(checkScanner.isKingChecked(move)){
+            return false;
+        }
+       if(move.newColumn < 0 || move.newColumn > 8 || move.newRow < 0 || move.newRow > 7){
+            return false;
+        }
+        return true;
+    }
+    public void paint(Graphics2D g2d) {
+        g2d.drawImage(pieceImage, position_x, position_y, null);
+
+
+}
+}
 
